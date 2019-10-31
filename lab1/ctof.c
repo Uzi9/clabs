@@ -17,4 +17,4 @@ while(celsius<=upper){
     celsius=celsius+step;
   }
     return 0;
-]
+}
