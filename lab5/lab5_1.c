@@ -1,29 +1,31 @@
-#include <stdio.h>
-#include <string.h>
-void reverse(char s[]){
-    void reverser(char s[], int i, int len);
-    reverser(s, 0, strlen(s)); 
-}
-void reverser(char s[], int i, int len){
-    int c, j;
-    j = len - (i + 1);
-    if (i < j){
-        c = s[i];
-        s[i] = s[j];
-        s[j] = c;
-        reverser(s, ++i, len);
-    }
-}
-int main(){
-    char s;
-    char t[1000];
+#include<stdio.h>
+int count(char str[]){
     int i = 0;
-    int k = 0;
-    while((s = getchar()) != '\n'){
-        t[i]=s;
-        k=++i;
+    while(str[i] != '\0'){
+      i++;
     }
-    reverser(t,0,k);
-    for(i=0;i<k;i++)
-    printf("%c",t[i]);
+    return i;
+}
+
+void reverse(char input[], char result[]) {
+    int length = count(input) - 1;
+    int index = 0;
+    while(length >= 0){
+      result[index++] = input[length--];
+    }
+}
+
+int main()
+{
+    char input[1024];
+    int i = 0;
+    input[i] = getchar();
+    while (input[i] !='\n'){
+        i++;
+        input[i] = getchar();
+    }
+
+    char result[1024];
+    reverse(input, result);
+    printf("%s\n", result);
 }
